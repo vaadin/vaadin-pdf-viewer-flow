@@ -1,0 +1,19 @@
+{
+  "name": "vaadin-pdf-viewer",
+  "homepage": "https://github.com/vaadin/vaadin-pdf-viewer",
+  "authors": [],
+  "description": "",
+  "main": "",
+  "license": "CVAL3",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "vaadin-pdf-viewer": "vaadin/vaadin-pdf-viewer#master"
+  }
+}
