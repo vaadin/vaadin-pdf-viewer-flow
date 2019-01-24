@@ -1,23 +1,79 @@
 package com.vaadin.flow.component.pdfviewer.vaadincom;
 
+import com.vaadin.flow.component.Text;
+import com.vaadin.flow.component.dependency.HtmlImport;
 import com.vaadin.flow.component.pdfviewer.PdfViewer;
 import com.vaadin.flow.demo.DemoView;
 import com.vaadin.flow.router.Route;
 
+@HtmlImport("frontend://shared-styles.html")
 @Route("vaadin-pdf-viewer")
 public class PdfViewerView extends DemoView {
 
     @Override
     protected void initView() {
-        basicDemo();
+        singePagePdf();
+        multiPagePdf();
+        noFile();
+        adjustZoom();
+        ownWorker();
     }
 
-    private void basicDemo() {
+    private void singePagePdf() {
+        // begin-source-example
+        // source-example-heading: Basic Demo
+        PdfViewer component = new PdfViewer();
+        component.setSrc("frontend/example-invoice.pdf");
+        // end-source-example
+
+        addCard("Showing a Single Page PDF Inline from File System", component);
+    }
+
+    private void multiPagePdf() {
+        // begin-source-example
+        // source-example-heading: Basic Demo
+        PdfViewer component = new PdfViewer();
+        component.setSrc("frontend/bitcoin.pdf");
+        // end-source-example
+
+        addCard("Showing a Multipage PDF Inline from File System", component);
+    }
+
+
+    private void noFile() {
         // begin-source-example
         // source-example-heading: Basic Demo
         PdfViewer component = new PdfViewer();
         // end-source-example
 
-        addCard("Basic Demo", component);
+        addCard("No File Specified", component);
+    }
+
+    private void adjustZoom() {
+        // begin-source-example
+        // source-example-heading: Basic Demo
+        PdfViewer component = new PdfViewer();
+        component.setSrc("frontend/example-invoice.pdf");
+        component.setZoom("page-fit");
+        // end-source-example
+        Text description = new Text("There are controls for the user to set a zoom level, but you can also defined programmatically what the level should be, so that you have a good default. For example, in many cases you want a one-pager to be fully visible on the screen. For that zoom=\"page-fit\" is an excellent choice.");
+        addCard("Adjust the zoom level", description, component);
+    }
+
+    private void ownWorker() {
+        // begin-source-example
+        // source-example-heading: Basic Demo
+        PdfViewer component = new PdfViewer();
+        component.setSrc("frontend/example-invoice.pdf");
+        component.setWorker("frontend/pdf.worker.min.js");
+        // end-source-example
+        Text description = new Text("The component needs pdf.worker.js sometimes, depending on the PDF being loaded. It is" +
+                " loaded lazily by telling the component where it is and it takes care of loading the file" +
+                " if needed. By default, it is loaded from a CDN," +
+                " '//cdnjs.cloudflare.com/ajax/libs/pdf.js/2.0.943/pdf.worker.min.js'. If you don't have" +
+                " internet access or don't want to rely on a server, you can download the file and deploy" +
+                " it within your app. When you have it available on runtime, update `worker` to point to" +
+                " the url for the file.");
+        addCard("Self-deployed worker", description, component);
     }
 }

@@ -22,15 +22,80 @@ import com.vaadin.flow.component.Tag;
 import com.vaadin.flow.component.dependency.HtmlImport;
 import com.vaadin.flow.component.html.H1;
 
-@Tag("div")
-//@Tag("vaadin-pdf-viewer")
-//@HtmlImport("frontend://bower_components/vaadin-pdf-viewer/src/vaadin-pdf-viewer.html")
+@Tag("vaadin-pdf-viewer")
+@HtmlImport("frontend://bower_components/vaadin-pdf-viewer/src/vaadin-pdf-viewer.html")
 public class PdfViewer extends Component {
 
     /**
      * Initializes a new PdfViewer.
      */
     public PdfViewer() {
-        getElement().appendChild(new H1("Hello World!").getElement());
+
     }
+
+    /**
+     * @return url to source file
+     */
+    public String getSrc() {
+        return getElement().getProperty("src");
+    }
+
+
+    /**
+     * You can set a pdf file that you want to render with src. Note that regular cross
+     * site scripting (XSS) rules apply. This means that the file should be on the same
+     * server as where the component is run, or that the server where the file is on should
+     * be configured to allow loading files from other sites.
+     *
+     * @param src url to file
+     */
+    public void setSrc(String src) {
+        getElement().setProperty("src", src);
+    }
+
+    /**
+     * @return current zoom level
+     */
+    public String getZoom() {
+        return getElement().getProperty("zoom");
+    }
+
+    /**
+     * The level of zoom on the document.
+     * Allowed values are
+     *  - Number, for zoom percentage. Eg. 1.5 means 150% zoom
+     *  - 'auto', default value
+     *  - 'page-fit', fit a full page into component
+     *
+     * @param zoom zoom level
+     */
+    public void setZoom(String zoom) {
+        getElement().setProperty("zoom", zoom);
+    }
+
+
+    /**
+     *
+     * @return url to the worker js file
+     */
+    public String getWorker() {
+        return getElement().getProperty("worker");
+    }
+
+    /**
+     * The component needs pdf.worker.js sometimes, depending on the PDF being loaded. It is
+     * loaded lazily by telling the component where it is and it takes care of loading the file
+     *  if needed. By default, it is loaded from a CDN,
+     * '//cdnjs.cloudflare.com/ajax/libs/pdf.js/2.0.943/pdf.worker.min.js'. If you don't have
+     * internet access or don't want to rely on a server, you can download the file and deploy
+     * it within your app. When you have it available on runtime, update `worker` to point to
+     * the url for the file.
+     *
+     * @param worker url to the worker js file
+     */
+    public void setWorker(String worker) {
+        getElement().setProperty("worker", worker);
+    }
+
+
 }

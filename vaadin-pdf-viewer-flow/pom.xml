@@ -55,11 +55,11 @@
         </dependency>
 
         <!--Webjar-->
-        <!--<dependency>-->
-            <!--<groupId>com.vaadin.webjar</groupId>-->
-            <!--<artifactId>vaadin-pdf-viewer</artifactId>-->
-            <!--<version>1.0.0</version>-->
-        <!--</dependency>-->
+        <dependency>
+            <groupId>org.webjars.bowergithub.vaadin</groupId>
+            <artifactId>vaadin-pdf-viewer</artifactId>
+            <version>1.0.0-alpha10</version>
+        </dependency>
 
 
         <!--Pinned transitive webjars-->
