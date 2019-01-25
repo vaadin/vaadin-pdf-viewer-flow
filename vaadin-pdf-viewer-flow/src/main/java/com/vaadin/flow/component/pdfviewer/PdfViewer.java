@@ -18,6 +18,7 @@ package com.vaadin.flow.component.pdfviewer;
  */
 
 import com.vaadin.flow.component.Component;
+import com.vaadin.flow.component.HasSize;
 import com.vaadin.flow.component.Tag;
 import com.vaadin.flow.component.dependency.HtmlImport;
 import com.vaadin.flow.component.html.H1;
@@ -25,7 +26,10 @@ import com.vaadin.flow.server.AbstractStreamResource;
 
 @Tag("vaadin-pdf-viewer")
 @HtmlImport("frontend://bower_components/vaadin-pdf-viewer/src/vaadin-pdf-viewer.html")
-public class PdfViewer extends Component {
+/**
+ * Web Component for showing PDF files inline, without any plugins needed on the client computer.
+ */
+public class PdfViewer extends Component implements HasSize {
 
     /**
      * Initializes a new PdfViewer.
@@ -60,7 +64,7 @@ public class PdfViewer extends Component {
      *
      * How to use:
      * {@code StreamResource resource = new StreamResource("mypdf.pdf", ()
-     *      -&gt; getPdfInputStream("mypdf.pdf");}
+     * -&gt; getPdfInputStream("mypdf.pdf");}
      *
      * @param src stream to file
      */

@@ -50,6 +50,7 @@ public class PdfViewerView extends DemoView {
         // source-example-heading: Basic Demo
         PdfViewer component = new PdfViewer();
         component.setSrc("frontend/example-invoice.pdf");
+        component.setHeight("600px");
         // end-source-example
 
         addCard("Showing a Single Page PDF Inline from File System", component);

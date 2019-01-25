@@ -5,19 +5,26 @@ import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
+import static org.junit.Assert.assertNull;
+
 public class PdfViewerTest {
 
-    private PdfViewer systemUnderTest;
+    private PdfViewer pdf;
 
     @Before
     public void setUp() {
-        systemUnderTest = new PdfViewer();
+        pdf = new PdfViewer();
     }
 
     @Test
-    public void onAttach_init() {
-        systemUnderTest.addAttachListener(e -> new AttachEvent(systemUnderTest, true));
+    public void checkSrcNull() {
+        assertNull("Src should be empty",
+                pdf.getSrc());
+    }
 
-        Assert.assertTrue(true);
+    @Test
+    public void testSrcProperty() {
+        pdf.setSrc("mypdf.pdf");
+        Assert.assertEquals("mypdf.pdf", pdf.getSrc());
     }
 }

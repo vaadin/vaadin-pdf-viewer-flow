@@ -23,4 +23,15 @@ import com.vaadin.testbench.elementsbase.Element;
 @Element("vaadin-pdf-viewer")
 public class PdfViewerElement extends TestBenchElement {
 
+    public String getTitle() {
+        return $("#title").first().getText();
+    }
+
+    public void nextPage() {
+        $("#nextPage").first().click();
+    }
+
+    public void previousPage() {
+        $("#previousPage").first().click();
+    }
 }
