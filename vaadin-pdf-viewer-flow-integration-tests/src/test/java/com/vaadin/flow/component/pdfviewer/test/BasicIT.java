@@ -11,12 +11,4 @@ public class BasicIT extends AbstractParallelTest {
     public void init() {
         getDriver().get(getBaseURL());
     }
-
-    @Test
-    public void clickAround() {
-        PdfViewerElement pdf = $(PdfViewerElement.class).waitForFirst();
-        pdf.nextPage();
-        pdf.nextPage();
-        pdf.previousPage();
-    }
 }
