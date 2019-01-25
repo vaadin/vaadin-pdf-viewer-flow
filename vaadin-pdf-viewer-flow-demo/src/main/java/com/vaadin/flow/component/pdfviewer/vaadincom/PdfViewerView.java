@@ -5,6 +5,11 @@ import com.vaadin.flow.component.dependency.HtmlImport;
 import com.vaadin.flow.component.pdfviewer.PdfViewer;
 import com.vaadin.flow.demo.DemoView;
 import com.vaadin.flow.router.Route;
+import com.vaadin.flow.server.StreamResource;
+import com.vaadin.flow.server.VaadinRequest;
+import com.vaadin.flow.server.VaadinService;
+
+import java.io.InputStream;
 
 @HtmlImport("frontend://shared-styles.html")
 @Route("vaadin-pdf-viewer")
@@ -13,10 +18,31 @@ public class PdfViewerView extends DemoView {
     @Override
     protected void initView() {
         singePagePdf();
+        readFromSource();
         multiPagePdf();
         noFile();
         adjustZoom();
         ownWorker();
+    }
+
+
+    private void readFromSource() {
+        // begin-source-example
+        // source-example-heading: Basic Demo
+        PdfViewer component = new PdfViewer();
+        StreamResource resource = new StreamResource("mypdf.pdf", () -> getPdfInputStream("mypdf.pdf"));
+        component.setSrc(resource);
+        // end-source-example
+        Text description = new Text("Use this method to give in a pdf file as a StreamResource. This is handy when " +
+                "you for example want to load a PDF from a database or have it freshly generated with a library." +
+                "getPdfInputStream returns the file in for of an InputStream. Ib this case it loads from the source " +
+                "folders with getClass().getResourceAsStream(\"/example-invoice.pdf\");");
+
+        addCard("Loading PDF from a stream", description, component);
+    }
+
+    private InputStream getPdfInputStream(String s) {
+        return getClass().getResourceAsStream("/example-invoice.pdf");
     }
 
     private void singePagePdf() {

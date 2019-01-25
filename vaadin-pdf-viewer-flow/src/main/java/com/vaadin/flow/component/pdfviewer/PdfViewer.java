@@ -21,6 +21,7 @@ import com.vaadin.flow.component.Component;
 import com.vaadin.flow.component.Tag;
 import com.vaadin.flow.component.dependency.HtmlImport;
 import com.vaadin.flow.component.html.H1;
+import com.vaadin.flow.server.AbstractStreamResource;
 
 @Tag("vaadin-pdf-viewer")
 @HtmlImport("frontend://bower_components/vaadin-pdf-viewer/src/vaadin-pdf-viewer.html")
@@ -37,7 +38,7 @@ public class PdfViewer extends Component {
      * @return url to source file
      */
     public String getSrc() {
-        return getElement().getProperty("src");
+        return getElement().getAttribute("src");
     }
 
 
@@ -50,9 +51,22 @@ public class PdfViewer extends Component {
      * @param src url to file
      */
     public void setSrc(String src) {
-        getElement().setProperty("src", src);
+        getElement().setAttribute("src", src);
     }
 
+    /**
+     * Use this method to give in a pdf file as a StreamResource. This is handy when you
+     * for example want to load a PDF from a database or have it freshly generated with a library
+     *
+     * How to use:
+     * {@code StreamResource resource = new StreamResource("mypdf.pdf", ()
+     *      -&gt; getPdfInputStream("mypdf.pdf");}
+     *
+     * @param src stream to file
+     */
+    public void setSrc(AbstractStreamResource src) {
+        getElement().setAttribute("src", src);
+    }
     /**
      * @return current zoom level
      */
