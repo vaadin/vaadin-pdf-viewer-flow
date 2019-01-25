@@ -8,6 +8,9 @@ import com.vaadin.flow.router.Route;
 public class Home extends Div {
 
     public Home() {
-        add(new PdfViewer());
+        PdfViewer pdf = new PdfViewer();
+        pdf.setSrc("frontend/bitcoin.pdf");
+        pdf.setZoom("page-fit");
+        add(pdf);
     }
 }

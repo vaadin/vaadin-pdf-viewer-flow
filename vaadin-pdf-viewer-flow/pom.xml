@@ -56,7 +56,7 @@
 
         <!--Webjar-->
         <dependency>
-            <groupId>com.vaadin</groupId>
+            <groupId>com.vaadin.webjar</groupId>
             <artifactId>vaadin-pdf-viewer</artifactId>
             <version>1.0.0-alpha11</version>
         </dependency>
