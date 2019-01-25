@@ -13,6 +13,6 @@ public class BasicIT extends AbstractParallelTest {
 
     @Test
     public void pass() {
-        Assert.assertEquals("Hello World!", $("h1").first().getText());
+
     }
 }
